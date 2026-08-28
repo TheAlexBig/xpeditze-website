@@ -1,5 +1,8 @@
 # Central Docs Website
 
+[![Website](https://img.shields.io/badge/website-centraldocssv.dpdns.org-17695d)](https://centraldocssv.dpdns.org)
+[![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE)
+
 Sitio público independiente para presentar, promocionar y vender Central Docs.
 No contiene el backend, las licencias ni los datos locales de la aplicación de
 escritorio.
@@ -39,3 +42,13 @@ El dominio público previsto es `https://centraldocssv.dpdns.org`.
 
 Las reglas de `public/_headers`, junto con `robots.txt` y `sitemap.xml`, se
 copian automáticamente a la salida de Vite durante la compilación.
+
+## Seguridad y privacidad
+
+Consulta [PRIVACY.md](PRIVACY.md) y [SECURITY.md](SECURITY.md) antes de
+agregar formularios, analítica o servicios externos.
+
+## Licencia
+
+Código publicado bajo la licencia Apache 2.0. La marca Central Docs y sus
+elementos identificativos no se conceden como parte de esa licencia.
