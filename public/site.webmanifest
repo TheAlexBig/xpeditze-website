@@ -1,0 +1,13 @@
+{
+  "name": "Central Docs",
+  "short_name": "Central Docs",
+  "description": "Software para preparar documentos legales con flujos guiados.",
+  "lang": "es",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#fbfcf9",
+  "theme_color": "#132f2b",
+  "icons": [
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ]
+}

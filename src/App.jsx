@@ -16,6 +16,7 @@ const workflow = [
 
 const features = [
   'Compraventa de vehículos con auténtica notarial',
+  'Contratos de mutuo con flujo guiado',
   'Historial de documentos y recuperación de borradores',
   'Directorio local de personas, notarios y abogados',
   'Textos legales editables por bloques',
@@ -23,10 +24,34 @@ const features = [
   'Aplicación de escritorio para Windows',
 ];
 
+const documentTypes = [
+  {
+    status: 'Disponible',
+    title: 'Compraventa de vehículos',
+    text: 'Organiza comprador, vendedor, vehículo, precio, firma y notario responsable en un solo flujo.',
+    details: ['Automóviles, motocicletas y transporte pesado', 'Documento privado y auténtica notarial', 'Descarga en Word y PDF'],
+  },
+  {
+    status: 'Disponible',
+    title: 'Contrato de mutuo',
+    text: 'Registra acreedor, deudor, monto, forma de pago, jurisdicción y condiciones del préstamo con una revisión final clara.',
+    details: ['Reutilización de personas guardadas', 'Lugar de firma por departamento, municipio y distrito', 'Historial y recuperación del documento'],
+  },
+  {
+    status: 'Próximamente',
+    title: 'Documentación de matrimonio',
+    text: 'Estamos preparando este nuevo flujo y recopilando la información necesaria para integrarlo correctamente.',
+    details: ['Proceso guiado', 'Datos reutilizables', 'Contenido sujeto a validación antes de su lanzamiento'],
+    upcoming: true,
+  },
+];
+
 const faqs = [
   ['¿Central Docs necesita Internet?', 'No para elaborar documentos. La aplicación funciona de forma local; Internet se utiliza únicamente para comprobar actualizaciones o solicitar soporte.'],
   ['¿Dónde se guarda mi información?', 'Los datos se almacenan en la computadora donde instalas Central Docs. No enviamos documentos ni expedientes a un servidor externo.'],
-  ['¿Qué formatos genera?', 'La compraventa puede descargarse como documento Word o PDF, manteniendo el mismo contenido legal.'],
+  ['¿Qué documentos están disponibles?', 'Actualmente puedes preparar compraventas de vehículos y contratos de mutuo. El flujo de documentación de matrimonio se encuentra en preparación.'],
+  ['¿Qué formatos genera?', 'Los documentos pueden descargarse en Word o PDF, manteniendo el mismo contenido.'],
+  ['¿Puedo usar Central Docs fuera de El Salvador?', 'Central Docs nace para el trabajo legal en El Salvador y atendemos consultas de toda Centroamérica. Antes de usar un modelo en otro país, su contenido debe adaptarse y validarse conforme a la normativa local.'],
   ['¿La licencia funciona en varias computadoras?', 'La licencia se emite para un equipo. Si necesitas utilizar Central Docs en varios puestos, solicita una cotización para tu operación.'],
 ];
 
@@ -44,6 +69,7 @@ function Header() {
         </button>
         <nav className={open ? 'nav-links open' : 'nav-links'} onClick={() => setOpen(false)}>
           <a href="#producto">Producto</a>
+          <a href="#documentos">Documentos</a>
           <a href="#como-funciona">Cómo funciona</a>
           <a href="#seguridad">Privacidad</a>
           <a href="#preguntas">Preguntas</a>
@@ -88,9 +114,9 @@ function App() {
         <section className="hero" id="inicio">
           <div className="container hero-grid">
             <div className="hero-copy">
-              <div className="eyebrow"><span /> Software legal para El Salvador</div>
+              <div className="eyebrow"><span /> Software legal creado en El Salvador</div>
               <h1>Documentos legales,<br /><em>sin complicaciones.</em></h1>
-              <p className="hero-lead">Central Docs convierte procesos repetitivos en un flujo claro, privado y rápido. Completa los datos una vez y genera tus documentos en Word o PDF.</p>
+              <p className="hero-lead">Prepara compraventas de vehículos y contratos de mutuo desde un flujo claro, privado y rápido. Central Docs convierte tus datos en documentos Word o PDF listos para revisar.</p>
               <div className="hero-actions">
                 <a className="button" href={siteConfig.purchaseUrl}>Solicitar una licencia <Icon name="arrow" size={18} /></a>
                 <a className="text-link" href="#como-funciona">Conocer cómo funciona <Icon name="arrow" size={17} /></a>
@@ -98,6 +124,23 @@ function App() {
               <div className="trust-line"><span><Icon name="check" size={16} /> Funciona sin Internet</span><span><Icon name="check" size={16} /> Instalación en Windows</span><span><Icon name="check" size={16} /> Soporte local</span></div>
             </div>
             <ProductPreview />
+          </div>
+        </section>
+
+        <section className="documents" id="documentos">
+          <div className="container">
+            <div className="section-intro"><span>DOCUMENTOS EN CENTRAL DOCS</span><h2>Un flujo especializado para cada documento.</h2><p>Cada opción reúne sus partes, condiciones y revisión final, sin mezclar campos que pertenecen a otros trámites.</p></div>
+            <div className="document-grid">
+              {documentTypes.map((document) => (
+                <article className={document.upcoming ? 'document-card upcoming' : 'document-card'} key={document.title}>
+                  <div className="document-status">{document.status}</div>
+                  <div className="icon-box"><Icon name="document" /></div>
+                  <h3>{document.title}</h3>
+                  <p>{document.text}</p>
+                  <ul>{document.details.map((detail) => <li key={detail}><Icon name="check" size={17} />{detail}</li>)}</ul>
+                </article>
+              ))}
+            </div>
           </div>
         </section>
 
@@ -126,13 +169,20 @@ function App() {
           <div className="container privacy-card"><div className="privacy-icon"><Icon name="lock" size={30} /></div><div><span className="section-label">PRIVACIDAD POR DISEÑO</span><h2>Tus documentos no tienen por qué salir de tu oficina.</h2><p>Central Docs se instala en tu computadora y conserva localmente personas, vehículos, plantillas e historial. Puedes trabajar incluso cuando no hay conexión.</p></div><div className="privacy-facts"><span><b>100%</b> operación local</span><span><b>0</b> documentos enviados a la nube</span><span><b>ZIP</b> respaldos bajo tu control</span></div></div>
         </section>
 
+        <section className="region" aria-labelledby="region-title">
+          <div className="container region-grid">
+            <div><span className="section-label">HECHO EN CENTROAMÉRICA</span><h2 id="region-title">Tecnología cercana al trabajo legal de la región.</h2></div>
+            <div><p>Central Docs nace en El Salvador para resolver tareas reales de profesionales, notarías y oficinas que preparan documentos todos los días.</p><p>Estamos construyendo una herramienta capaz de crecer hacia Guatemala, Honduras, Nicaragua, Costa Rica, Panamá y Belice. La disponibilidad y los modelos legales se validan por país antes de ofrecerse.</p><a className="text-link" href={`mailto:${siteConfig.salesEmail}?subject=Central Docs para mi país`}>Consultar disponibilidad en mi país <Icon name="arrow" size={17} /></a></div>
+          </div>
+        </section>
+
         <section className="purchase" id="contacto">
           <div className="container purchase-grid"><div><span className="section-label">CENTRAL DOCS PARA WINDOWS</span><h2>Empieza a trabajar con más orden.</h2><p>Cuéntanos cuántos equipos necesitas y te ayudaremos con la licencia, instalación y primeros pasos.</p></div><div className="price-card"><small>LICENCIA POR EQUIPO</small><h3>{siteConfig.priceLabel}</h3><ul><li><Icon name="check" size={17} /> Instalador para Windows</li><li><Icon name="check" size={17} /> Activación vinculada al equipo</li><li><Icon name="check" size={17} /> Actualizaciones y soporte</li></ul><a className="button full" href={`mailto:${siteConfig.salesEmail}?subject=Solicitud de licencia Central Docs`}>Solicitar información <Icon name="arrow" size={18} /></a><p>También puedes escribir a <a href={`mailto:${siteConfig.salesEmail}`}>{siteConfig.salesEmail}</a></p></div></div>
         </section>
 
         <section className="faq" id="preguntas"><div className="container faq-grid"><div><span className="section-label">PREGUNTAS FRECUENTES</span><h2>Antes de comenzar.</h2><p>Lo esencial sobre instalación, privacidad y licenciamiento.</p></div><div className="faq-list">{faqs.map(([question, answer]) => <details key={question}><summary>{question}<span>+</span></summary><p>{answer}</p></details>)}</div></div></section>
       </main>
-      <footer><div className="container footer-grid"><a className="brand light-brand" href="#inicio"><span className="brand-mark">C</span><span>Central Docs</span></a><p>Documentos legales, sin complicaciones.</p><div><a href="#producto">Producto</a><a href="#seguridad">Privacidad</a><a href={`mailto:${siteConfig.salesEmail}`}>Contacto</a></div><small>© {new Date().getFullYear()} Central Docs</small></div></footer>
+      <footer><div className="container footer-grid"><a className="brand light-brand" href="#inicio"><span className="brand-mark">C</span><span>Central Docs</span></a><p>Software para documentos legales en Centroamérica.</p><div><a href="#documentos">Documentos</a><a href="#seguridad">Privacidad</a><a href={`mailto:${siteConfig.salesEmail}`}>Contacto</a></div><small>© {new Date().getFullYear()} Central Docs · El Salvador</small></div></footer>
     </>
   );
 }
