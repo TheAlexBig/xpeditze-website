@@ -43,6 +43,30 @@ El dominio público previsto es `https://xpeditze.dpdns.org`.
 Las reglas de `public/_headers`, junto con `robots.txt` y `sitemap.xml`, se
 copian automáticamente a la salida de Vite durante la compilación.
 
+### Vista previa antes de producción
+
+La rama `preview` se publica con GitHub Actions en:
+
+`https://thealexbig.github.io/xpeditze-website/`
+
+Flujo recomendado:
+
+1. Integra los cambios que quieras revisar en `preview`.
+2. Espera que termine la acción **Vista previa en GitHub Pages**.
+3. Revisa el enlace de GitHub Pages en computadora y móvil.
+4. Cuando esté aprobado, integra el mismo cambio en `main`; solo entonces
+   Cloudflare ejecuta la compilación de producción.
+
+La compilación de vista previa usa la ruta base de GitHub Pages y agrega
+`noindex, nofollow` para no competir con el dominio público en buscadores.
+
+En Cloudflare Pages, la rama de producción es `main`, las implementaciones de
+ramas de vista previa están desactivadas y las rutas observadas son:
+
+- Incluidas: `*`
+- Excluidas: `.github/*`, `README.md`, `PRIVACY.md`, `SECURITY.md`, `LICENSE`,
+  `.gitignore`
+
 ## Seguridad y privacidad
 
 Consulta [PRIVACY.md](PRIVACY.md) y [SECURITY.md](SECURITY.md) antes de
