@@ -34,14 +34,41 @@ sido definidos y verificados.
 
 El dominio público previsto es `https://xpeditze.dpdns.org`.
 
-1. Publica este directorio en un repositorio GitHub independiente.
-2. En Cloudflare, crea un proyecto de Pages conectado al repositorio.
-3. Usa `npm run build` como comando de compilación y `dist` como directorio de salida.
-4. Configura en Pages las variables `VITE_*` descritas en `.env.example`.
+1. Mantén `doc-central-website` como proyecto de Pages con Direct Upload.
+2. Guarda en GitHub el secreto `CLOUDFLARE_API_TOKEN` con permiso
+   **Account / Cloudflare Pages / Edit**.
+3. Guarda `CLOUDFLARE_ACCOUNT_ID` y las variables `VITE_*` de `.env.example`
+   como variables de GitHub Actions.
+4. Integra en `main` únicamente después de revisar la rama `preview`.
 5. Agrega `xpeditze.dpdns.org` desde la sección **Custom domains** del proyecto.
 
 Las reglas de `public/_headers`, junto con `robots.txt` y `sitemap.xml`, se
 copian automáticamente a la salida de Vite durante la compilación.
+
+### Vista previa antes de producción
+
+La rama `preview` se publica con GitHub Actions en:
+
+`https://thealexbig.github.io/xpeditze-website/`
+
+Flujo recomendado:
+
+1. Integra los cambios que quieras revisar en `preview`.
+2. Espera que termine la acción **Vista previa en GitHub Pages**.
+3. Revisa el enlace de GitHub Pages en computadora y móvil.
+4. Cuando esté aprobado, integra el mismo cambio en `main`; solo entonces la
+   acción **Publicar producción en Cloudflare Pages** compila y publica en el
+   proyecto `doc-central-website`.
+
+La compilación de vista previa usa la ruta base de GitHub Pages y agrega
+`noindex, nofollow` para no competir con el dominio público en buscadores.
+
+El proyecto de Cloudflare Pages usa Direct Upload. GitHub Actions publica
+únicamente desde `main` con un token guardado como el secreto
+`CLOUDFLARE_API_TOKEN`; el identificador de cuenta se guarda como la variable
+`CLOUDFLARE_ACCOUNT_ID`. Al ser Direct Upload, las opciones de Build watch
+paths ya no aplican; el disparador de producción está definido en el workflow
+de GitHub.
 
 ## Seguridad y privacidad
 
