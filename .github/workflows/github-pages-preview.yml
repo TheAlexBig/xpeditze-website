@@ -35,6 +35,10 @@ jobs:
         run: npm run build
         env:
           GITHUB_PAGES_PREVIEW: 'true'
+          VITE_SALES_EMAIL: ${{ vars.VITE_SALES_EMAIL }}
+          VITE_PURCHASE_URL: ${{ vars.VITE_PURCHASE_URL }}
+          VITE_DEMO_URL: ${{ vars.VITE_DEMO_URL }}
+          VITE_PRICE_LABEL: ${{ vars.VITE_PRICE_LABEL }}
 
       - name: Configurar GitHub Pages
         uses: actions/configure-pages@v6
