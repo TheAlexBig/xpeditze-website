@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://xpeditze.dpdns.org/sitemap.xml
+Sitemap: https://xpeditze.pages.dev/sitemap.xml

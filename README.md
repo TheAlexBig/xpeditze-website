@@ -1,6 +1,6 @@
 # Xpeditze Website
 
-[![Website](https://img.shields.io/badge/website-xpeditze.dpdns.org-17695d)](https://xpeditze.dpdns.org)
+[![Website](https://img.shields.io/badge/website-xpeditze.pages.dev-17695d)](https://xpeditze.pages.dev)
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE)
 
 Sitio público independiente para presentar, promocionar y vender Xpeditze.
@@ -32,15 +32,16 @@ sido definidos y verificados.
 
 ## Publicación en Cloudflare Pages
 
-El dominio público previsto es `https://xpeditze.dpdns.org`.
+El dominio público actual es `https://xpeditze.pages.dev`.
 
-1. Mantén `doc-central-website` como proyecto de Pages con Direct Upload.
+1. Mantén `xpeditze` como proyecto principal de Pages con Direct Upload.
 2. Guarda en GitHub el secreto `CLOUDFLARE_API_TOKEN` con permiso
    **Account / Cloudflare Pages / Edit**.
 3. Guarda `CLOUDFLARE_ACCOUNT_ID` y las variables `VITE_*` de `.env.example`
    como variables de GitHub Actions.
 4. Integra en `main` únicamente después de revisar la rama `preview`.
-5. Agrega `xpeditze.dpdns.org` desde la sección **Custom domains** del proyecto.
+5. Mantén `doc-central-website` como proyecto de redirección para la URL y el
+   dominio anteriores.
 
 Las reglas de `public/_headers`, junto con `robots.txt` y `sitemap.xml`, se
 copian automáticamente a la salida de Vite durante la compilación.
@@ -58,7 +59,7 @@ Flujo recomendado:
 3. Revisa el enlace de GitHub Pages en computadora y móvil.
 4. Cuando esté aprobado, integra el mismo cambio en `main`; solo entonces la
    acción **Publicar producción en Cloudflare Pages** compila y publica en el
-   proyecto `doc-central-website`.
+   proyecto `xpeditze`; después actualiza la redirección del proyecto anterior.
 
 La compilación de vista previa usa la ruta base de GitHub Pages y agrega
 `noindex, nofollow` para no competir con el dominio público en buscadores.
