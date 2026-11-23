@@ -21,6 +21,7 @@ const workflow = [
 const features = [
   'Compraventa de vehículos con auténtica notarial',
   'Contratos de mutuo con flujo guiado',
+  'Expedientes matrimoniales con control registral',
   'Historial de documentos y recuperación de borradores',
   'Directorio local de personas, notarios y abogados',
   'Textos legales editables por bloques',
@@ -42,18 +43,17 @@ const documentTypes = [
     details: ['Reutilización de personas guardadas', 'Lugar de firma por departamento, municipio y distrito', 'Historial y recuperación del documento'],
   },
   {
-    status: 'Próximamente',
+    status: 'Disponible',
     title: 'Documentación de matrimonio',
-    text: 'Estamos preparando este nuevo flujo y recopilando la información necesaria para integrarlo correctamente.',
-    details: ['Proceso guiado', 'Datos reutilizables', 'Contenido sujeto a validación antes de su lanzamiento'],
-    upcoming: true,
+    text: 'Prepara el acta prematrimonial, la escritura matriz y la hoja interna de control registral en un solo expediente.',
+    details: ['Casos nacionales y documentación extranjera', 'Testigos, regímenes patrimoniales y condiciones especiales', 'Descarga en Word y PDF'],
   },
 ];
 
 const faqs = [
   ['¿Xpeditze necesita Internet?', 'No para elaborar documentos. La aplicación funciona de forma local; Internet se utiliza únicamente para comprobar actualizaciones o solicitar soporte.'],
   ['¿Dónde se guarda mi información?', 'Los datos se almacenan en la computadora donde instalas Xpeditze. No enviamos documentos ni expedientes a un servidor externo.'],
-  ['¿Qué documentos están disponibles?', 'Actualmente puedes preparar compraventas de vehículos y contratos de mutuo. El flujo de documentación de matrimonio se encuentra en preparación.'],
+  ['¿Qué documentos están disponibles?', 'Actualmente puedes preparar compraventas de vehículos, contratos de mutuo y expedientes matrimoniales.'],
   ['¿Qué formatos genera?', 'Los documentos pueden descargarse en Word o PDF, manteniendo el mismo contenido.'],
   ['¿Puedo usar Xpeditze fuera de El Salvador?', 'Xpeditze nace para el trabajo legal en El Salvador y atendemos consultas de toda Centroamérica. Antes de usar un modelo en otro país, su contenido debe adaptarse y validarse conforme a la normativa local.'],
   ['¿La licencia funciona en varias computadoras?', 'La licencia se emite para un equipo. Si necesitas utilizar Xpeditze en varios puestos, solicita una cotización para tu operación.'],
@@ -120,7 +120,7 @@ function App() {
             <div className="hero-copy">
               <div className="eyebrow"><span /> Software legal creado en El Salvador</div>
               <h1>Documentos legales,<br /><em>sin complicaciones.</em></h1>
-              <p className="hero-lead">Prepara compraventas de vehículos y contratos de mutuo desde un flujo claro, privado y rápido. Xpeditze convierte tus datos en documentos Word o PDF listos para revisar.</p>
+              <p className="hero-lead">Prepara compraventas de vehículos, contratos de mutuo y expedientes matrimoniales desde un flujo claro, privado y rápido. Xpeditze convierte tus datos en documentos Word o PDF listos para revisar.</p>
               <div className="hero-actions">
                 <a className="button" href={siteConfig.purchaseUrl}>Solicitar una licencia <Icon name="arrow" size={18} /></a>
                 <a className="text-link" href="#como-funciona">Conocer cómo funciona <Icon name="arrow" size={17} /></a>
